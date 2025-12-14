@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Jailer</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+
+        .calculadora {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+        }
+
+        h2 {
+            color: white;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        #display {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 10px;
+            text-align: right;
+            font-size: 18px;
+            border-radius: 5px;
+            border: none;
+            padding-right: 10px;
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 60px);
+            gap: 10px;
+            justify-content: center;
+        }
+
+        input[type="button"] {
+            height: 60px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #555;
+            color: white;
+        }
+
+        input[type="button"]:hover {
+            background-color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="calculadora">
+    <h2>Bienvenido a mi calculadora<br>Hecho por Jailer Toro</h2>
+
+    <input type="text" id="display" readonly>
+
+    <div class="botones">
+        <input type="button" value="1">
+        <input type="button" value="2">
+        <input type="button" value="3">
+        <input type="button" value="+">
+
+        <input type="button" value="4">
+        <input type="button" value="5">
+        <input type="button" value="6">
+        <input type="button" value="-">
+
+        <input type="button" value="7">
+        <input type="button" value="8">
+        <input type="button" value="9">
+        <input type="button" value="*">
+
+        <input type="button" value="0">
+        <input type="button" value="C">
+        <input type="button" value="=">
+        <input type="button" value="/">
+    </div>
+</div>
+
+<script>
+    const display = document.getElementById("display");
+    const buttons = document.querySelectorAll("input[type='button']");
+
+    buttons.forEach(button => {
+        button.addEventListener("click", () => {
+            const value = button.value;
+
+            if (value === "=") {
+                try {
+                    display.value = eval(display.value);
+                } catch {
+                    display.value = "Error";
+                }
+            } 
+            else if (value === "C") {
+                display.value = "";
+            } 
+            else {
+                display.value += value;
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
+
+    
+
+
